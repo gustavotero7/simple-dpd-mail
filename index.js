@@ -17,8 +17,8 @@ function Mail(name, options) {
   }
 
   this.transport = nodemailer.createTransport(smtpTransport({
-    host : this.config.host,
-    port : parseInt(this.config.port, 10),
+    host : this.config.host || "localhost",
+    port : parseInt(this.config.port, 10) || 25,
     secure : this.config.ssl,
     auth : authParams
   }))
