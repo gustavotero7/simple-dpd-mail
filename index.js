@@ -40,7 +40,7 @@ Mail.basicDashboard = {
     description : 'Host name of your SMTP provider. Defaults to \'localhost\'.'
   }, {
     name        : 'port',
-    type        : 'numeric',
+    type        : 'number',
     description : 'Port number of your SMTP provider. Defaults to 25'
   }, {
     name        : 'ssl',
