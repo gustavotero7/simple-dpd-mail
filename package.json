@@ -1,6 +1,6 @@
 {
   "name": "dpd-mail",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple nodemailer integration for deployd",
   "main": "index.js",
   "repository": {
