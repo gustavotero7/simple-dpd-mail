@@ -14,6 +14,7 @@ Go to your dashboard and create Mail resource and enter the requested info.
 * password: SMTP password.
 * defaultFromAddress: Optional; if not provided you will need to provide a 'from' address in every request.
 * internalOnly: Only allow internal scripts to send email.
+* secret: secret key or password to make external requests, only for external calls, will be ignored for internal calls
 
 To send an email just call the post method of the mail resource you have created.
 
@@ -23,7 +24,8 @@ dpd.mail.post({
   to: 'to@example',
   subject: 'Your subject',
   html: '<b>Html Content</b>',
-  text: 'Text Content'
+  text: 'Text Content',
+  secret: 'aisufdy6das827d'
 }, function(result, error) {
   console.log(error); //Delete the log calls if you want
   console.log(result);
