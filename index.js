@@ -71,7 +71,11 @@ Mail.basicDashboard = {
     name: 'secret',
     type: 'text',
     description: 'secret key or password to make external requests, only for external calls, will be ignored for internal calls'
-  }]
+  }, {
+      name: 'async',
+      type: 'checkbox',
+      description: 'make the email request asynchronous'
+    }]
 };
 
 
@@ -99,7 +103,6 @@ Mail.prototype.handle = function(ctx, next) { //Comportamiento al llamar funcion
       });
     }
   }
-
 
 
   var options = ctx.body;
@@ -133,13 +136,19 @@ Mail.prototype.handle = function(ctx, next) { //Comportamiento al llamar funcion
     options,
     function(err, response) {
       if (err) {
-        return ctx.done(options.html);
+        console.log(err)
+        return ctx.done(err);
       }
       ctx.done(null, {
         message: response.message
       });
     }
   );
- 
+  
+  if(this.config.async) {
+    ctx.done(null, {
+      message: 'email is queued for sending'
+    });
+  }
 
 }
